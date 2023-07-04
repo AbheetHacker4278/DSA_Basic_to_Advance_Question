@@ -1,0 +1,32 @@
+//Print 2d Array like a Wave??
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int arr[3][3];
+    for(int i = 0 ; i<3 ; i++){
+        for(int j = 0 ; j<3 ; j++){
+            cin>>arr[i][j];
+        }
+    }
+        
+    for(int i = 0 ; i<3 ; i++){
+        for(int j = 0 ; j<3 ; j++){
+            cout << arr[i][j] << " ";
+        }cout << endl;
+    }
+    vector<int> ans;
+    for(int c = 0 ; c<3; c++){
+        if((c&1) == 1){
+            for(int r = 2 ; r>=0 ; r--){
+                ans.push_back(arr[r][c]);
+            }
+        }
+        else{
+            for(int r = 0 ; r<3 ; r++){
+                ans.push_back(arr[r][c]);
+            }
+        }
+    }
+    for(auto x: ans) cout << x << " ";   
+}
