@@ -1,0 +1,22 @@
+//selection sort an array?
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+void sele(int arr[] , int size){
+    for(int i = 0 ; i <= size - 1 ; i++){
+        int minval = i;
+        for(int j = i + 1 ; j < size ; j++){
+            if(arr[j] < arr[minval]){
+                minval = j; 
+            }
+        }
+        swap(arr[minval] , arr[i]);
+        cout << arr[i] << " ";
+    }
+}
+int main()
+{
+    int arr[4] = {10 , 1 , 2 , 0};
+    sele(arr , 4);
+}
