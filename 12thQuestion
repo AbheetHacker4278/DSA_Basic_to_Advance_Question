@@ -1,0 +1,24 @@
+//Koko Eating Banana?
+
+#include <bits/stdc++.h>
+int timecal(vector<int> v, int h){
+    int totalhr = 0;
+    for(int i = 0 ; i<v.size() ; i++){
+        totalhr+=ceil((double)v[i] / (double)h);
+    }
+    return totalhr;
+}
+int minimumRateToEatBananas(vector<int> v, int h) {
+    int s = 1;
+    int e = *max_element(v.begin() , v.end());
+    while(s<=e){
+        int mid = s + (e - s) / 2;
+        if(timecal(v , mid) <= h){
+            e = mid - 1;
+        }
+        else{
+            s = mid + 1;
+        }
+    }
+    return s;
+}
