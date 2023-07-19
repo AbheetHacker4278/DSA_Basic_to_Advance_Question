@@ -1,0 +1,27 @@
+//bubble sort an unsorted array ?
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+void bs(int arr[] , int size){
+    bool done = false;
+    for(int i = 1 ; i<size ; i++){
+        for(int j = 0 ; j<size-i ; j++){
+            if(arr[j] > arr[j+1]){	
+                swap(arr[j],arr[j+1]);
+                done = true;
+            }
+        }
+        if(done == false){
+            cout << "Array is already sorted: "<<endl;
+            break;
+        }
+    }
+    for(int k = 0 ; k<size ; k++){
+        cout << arr[k] << " ";
+    }
+}
+int main(){
+    int arr[5] = {1,2,3,4,5};
+    bs(arr,5);
+}
