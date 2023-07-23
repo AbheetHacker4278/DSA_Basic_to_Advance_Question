@@ -1,0 +1,21 @@
+//put every zero at last of sorted array??
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int arr[4] = {9,0,2,0};
+    
+    int i = 0;
+    for(int j = 1 ; j<4 ; j++){
+        if(arr[j] != 0){
+            swap(arr[j] , arr[i]);
+            i++;
+        }
+        if(arr[i]!=0){
+            i++;
+        }
+    }
+    for(int k = 0 ; k<4 ; k++){
+        cout << arr[k] << " ";
+    }
+}
