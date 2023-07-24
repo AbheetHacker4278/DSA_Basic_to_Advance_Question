@@ -1,0 +1,37 @@
+//find the number of 1 in the brinary number?
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n = 3;
+    int cnt = 0;
+    while(n!=0){
+        if (n and 1 == 1){
+            cnt++;
+        }
+        n = n>>1;
+    }
+    cout << cnt << endl;
+}
+
+           OR
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n = 11110011 , count = 0;
+    while(n!=0){
+        int rem = n%10;
+        n /= 10;
+        if (n != 1){
+            n = n>>1;
+            count++;
+        }
+    }
+    cout<< count << endl;
+}
