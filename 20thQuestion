@@ -1,0 +1,75 @@
+//minimum number of days to make m bouquets?
+
+//in this question i have to find the minimum number of days to make m bouquets.and bouquets should be adjecent only.
+
+//Brute Force
+
+#include <bits/stdc++.h>
+using namespace std;
+int ispossible(vector<int> arr , int day , int m , int k){
+    int count = 0;
+    int numofday = 0;
+    for(int i = 0 ; i<arr.size() ; i++){
+        if(arr[i] <= day){
+            count++;
+        }
+        else{
+            numofday+=count / k;
+            count = 0;
+        }
+    }
+    numofday+=count / k;
+    if(numofday >= m)return true;
+    return false;
+}
+int main(){
+    vector<int> arr = {1 , 2 , 1 , 2 , 7 , 2 , 2 , 3 , 1};
+    int m = 2;
+    int k = 3;
+    if(m * k > arr.size())cout << -1 << endl;
+    int mini = *min_element(arr.begin() , arr.end());
+    int maxi = *max_element(arr.begin() , arr.end());
+    for(int i = mini ; i<=maxi ; i++){
+        if(ispossible(arr , i , m , k) == true){
+            cout << i << " ";
+            break;
+        }
+    }
+}
+
+//optimal 
+
+  bool possible(vector<int> &bloomDay, int day, int M, int K){
+	int count = 0 , noOfB = 0;
+	int n = bloomDay.size();
+	for(int i = 0; i<n; i++){
+		if(bloomDay[i] <= day){
+		    count++;
+	    }
+		else{
+			noOfB += count/K;
+			count = 0;
+		}
+	}
+	noOfB += count/K;
+	if(noOfB >= M) return true;
+	return false;
+}
+    int solve(int M, int K, vector<int> &bloomDay){
+        if(1ll*M * 1ll*K > bloomDay.size())return -1;
+        int s = *min_element(bloomDay.begin() , bloomDay.end());
+        int e = *max_element(bloomDay.begin() , bloomDay.end());
+        int ans = 0;
+        while(s <= e){
+            int mid = s + (e - s) / 2;
+            if(possible(bloomDay , mid , M , K)){
+                ans = mid;
+                e = mid - 1;
+            }
+            else{
+                s = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
