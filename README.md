@@ -4,4 +4,5 @@ in this repo i will upload my dsa questions , which i will practice during learn
 LeetCode:https://leetcode.com/abheet_seth_/
 GeekForGeek:https://auth.geeksforgeeks.org/user/asethq4nl/practice
 CodingNinja:https://www.codingninjas.com/studio/profile/AbheetHacker
+CodeChef:https://www.codechef.com/users/aseth9588
 
