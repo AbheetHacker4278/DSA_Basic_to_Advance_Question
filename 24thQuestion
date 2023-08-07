@@ -1,0 +1,12 @@
+//count number of negative number in sorted rows and colums in 2D array / matrix?
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int count = 0;
+    vector<vector<int>> arr = {{-3, -2, -1,  1} , {-2,  2,  3,  4} , {4,   5,  7,  8}};
+    for(int i = 0 ; i < arr.size() ; i++){
+        int num = upper_bound(arr[i].begin() , arr[i].end() , 0) - arr[i].begin();
+        count += num;
+    }
+    cout << count << endl;
+}
