@@ -1,0 +1,33 @@
+//print this pattern
+
+******
+ *****
+  ****
+   ***
+    **
+     *
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main(){
+    int n, i = 1;
+    cout << "Enter a number: ";
+    cin >> n;
+    while(i<=n){
+        int s = i - 1;
+        while(s){
+            cout << " ";
+            s--;
+        }
+        int j = n;
+        while(j>=i){
+            cout << "*";
+            j--;
+        }
+        cout<<endl;
+        i++;
+    }
+    return 0;
+}
