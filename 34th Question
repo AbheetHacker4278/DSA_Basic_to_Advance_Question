@@ -1,0 +1,25 @@
+subset of the the array or Power set of the array?
+
+void solve(vector<int> arr , vector<int> output , int i , vector<vector<int>> &ans){
+    if(i >= arr.size()){
+        ans.push_back(output);
+        return ;
+    }
+    //exclude
+    solve(arr , output , i + 1 , ans);
+    
+    //include
+    int element = arr[i];
+    output.push_back(element);
+    solve(arr , output , i + 1 , ans);
+    
+}
+int main(){
+    vector<int> arr = {1 , 2 , 3};
+    vector<vector<int>> ans;
+    vector<int> output;
+    int i = 0;
+    solve(arr , output , i , ans);
+    for(auto x:ans) cout << x << " ";
+    
+}
