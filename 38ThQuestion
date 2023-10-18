@@ -1,0 +1,95 @@
+Rat in a Maze?
+
+class Solution{
+    public:
+    bool isSafe(int newx , int newy , int n , vector<vector<int>> visited , vector<vector<int>> &m){
+        if((newx >= 0 && newx < n) && (newy >= 0 && newy < n) && visited[newx][newy] == 0 && m[newx][newy] == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    };
+    void solve(vector<vector<int>> &m , int n , vector<string> &ans , int srcx , int srcy , vector<vector<int>> visited , string path){
+        //base case , reached to the destination
+        if(srcx == n - 1 && srcy == n - 1){
+            ans.push_back(path);
+            return ;
+        }
+        visited[srcx][srcy] = 1;
+        
+        //4choises down , up , left , right
+        
+        //for down
+        int newx = srcx + 1;
+        int newy = srcy;
+        
+        if(isSafe(newx , newy , n , visited , m)){
+            path.push_back('D');
+            solve(m , n , ans , newx , newy , visited , path);
+            path.pop_back();
+        }
+        
+        //for left
+        newx = srcx;
+        newy = srcy - 1;
+        
+        if(isSafe(newx , newy , n , visited , m)){
+            path.push_back('L');
+            solve(m , n , ans , newx , newy , visited , path);
+            path.pop_back();
+        }
+        
+        //for right
+        
+        newx = srcx;
+        newy = srcy + 1;
+        if(isSafe(newx , newy , n , visited , m)){
+            path.push_back('R');
+            solve(m , n , ans , newx , newy , visited , path);
+            path.pop_back();
+        }
+        
+        //for up
+        
+        newx = srcx - 1;
+        newy = srcy;
+        
+        if(isSafe(newx , newy , n , visited , m)){
+            path.push_back('U');
+            solve(m , n , ans , newx , newy , visited , path);
+            path.pop_back();
+        }
+        
+        visited[srcx][srcy] = 0;
+        
+    };
+    vector<string> findPath(vector<vector<int>> &m, int n) {
+        vector<string> ans;
+        int srcx = 0;//starting point where Rat start its journey.
+        int srcy = 0;//starting point where Rat start its journey.
+        
+        //if rat at its staring position having zero , so rat cant go anywhere
+        if(m[0][0] == 0){
+            return ans;
+        }
+        
+        //we have created the visited array with all the path as zero intilize.
+        vector<vector<int>>visited = m;
+        for(int i = 0 ; i<n ; i++){
+            for(int j = 0 ; j<n ; j++){
+                visited[i][j] = 0;
+            }
+        }
+        
+        //answer to be stored
+        string path = "";
+        
+        //recursive function
+        solve(m , n , ans , srcx , srcy , visited , path);
+        sort(ans.begin() , ans.end());
+        return ans;
+    }
+};
+
+    
